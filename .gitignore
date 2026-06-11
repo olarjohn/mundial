@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*.log
+.vscode/*.tmp
+
+# Local server output
+coverage/
+node_modules/
