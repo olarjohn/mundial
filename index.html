@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador Mundial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <main class="container">
+      <header class="hero">
+        <p class="eyebrow">Panel Oficial 2026</p>
+        <h1>Mundial Bracket Studio</h1>
+        <p>
+          Carga los grupos y partidos desde internet, ingresa marcadores reales y
+          calcula clasificados en formato oficial: grupos, dieciseisavos, octavos,
+          cuartos, semifinales y final.
+        </p>
+      </header>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>1) Cargar datos del Mundial 2026</h2>
+          <div class="actions">
+            <button id="load-web-btn" class="btn btn-primary">Traer grupos y partidos de internet</button>
+            <button id="export-btn" class="btn">Exportar JSON</button>
+            <label class="btn file-btn" for="import-file">Importar JSON</label>
+            <input id="import-file" type="file" accept="application/json" />
+          </div>
+        </div>
+        <p id="status" class="status">Sin datos cargados.</p>
+      </section>
+
+      <section class="card">
+        <h2>2) Fase de grupos</h2>
+
+        <div id="group-matches-body" class="matches-grid"></div>
+
+        <div class="calc-block">
+          <button id="calc-btn" class="btn btn-primary">Calcular clasificados y actualizar llaves</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3) Llaves editables</h2>
+
+        <div id="knockout-matches-body" class="matches-grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>4) Clasificados y llaves reales</h2>
+        </div>
+        <p class="status subtle">
+          Para partidos de eliminacion directa no puede haber empate. Ingresa un ganador en cada cruce.
+        </p>
+
+        <h3>Tablas de grupos</h3>
+        <div id="group-standings" class="group-grid"></div>
+
+        <h3>Clasificados</h3>
+        <div id="qualified" class="qualified"></div>
+
+        <h3>Llaves de eliminacion</h3>
+        <div id="bracket" class="bracket"></div>
+
+        <div id="champion" class="champion hidden"></div>
+        <div id="warnings" class="warnings"></div>
+      </section>
+
+      <section class="card">
+        <h2>5) Referencia de fuente</h2>
+        <p class="subtle">
+          Datos iniciales tomados de openfootball:
+          <a href="https://raw.githubusercontent.com/openfootball/world-cup.json/master/2026/worldcup.json" target="_blank" rel="noreferrer noopener">
+            worldcup.json (2026)
+          </a>
+        </p>
+      </section>
+    </main>
+
+    <template id="empty-state-template">
+      <div class="empty">Aun no hay partidos cargados desde internet o JSON.</div>
+    </template>
+
+    <template id="knockout-empty-state-template">
+      <div class="empty">Las llaves se llenaran cuando calcules los clasificados.</div>
+    </template>
+
+    <template id="group-empty-template">
+      <div class="empty">Sin resultados de grupos aun.</div>
+    </template>
+
+    <template id="bracket-empty-template">
+      <div class="empty">Sin llaves calculadas aun.</div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
